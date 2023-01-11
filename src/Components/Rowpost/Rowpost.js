@@ -4,6 +4,7 @@ import './Rowpost.css'
 import axios from '../../axios'
 import {  API_KEY, IMAGE_URL } from '../../constants/constants'
 
+
 function Rowpost(props) {
     const [movies, setmovies] = useState([])
     const [ytId, setYtid] = useState('')
@@ -33,12 +34,18 @@ const handleMovie = (id)=>{
     <h2>{props.title}</h2>
     <div className='posters'>
     {movies.map((obj)=>
-         <img onClick={()=>{handleMovie(obj.id)}} className='smallposter'  alt='poster' src={`${IMAGE_URL+obj.backdrop_path}`} />
+         <img onClick={()=>{handleMovie(obj.id)}}  className={props.isSmall ? "smallposter" : "poster"}  alt='poster' src={`${IMAGE_URL+obj.backdrop_path}`} />
     )}
         
        
     </div>
-    { ytId &&  <YouTube opts={opts} videoId ={ytId.key} />}
+   
+    { ytId && (<div>
+      <i class="fas fa-times close" onClick={()=>{setYtid("") }}></i>
+      <YouTube opts={opts} videoId ={ytId.key} />
+    </div>) }
+    
+
 </div>
   )
 }
