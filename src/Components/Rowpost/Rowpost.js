@@ -33,7 +33,7 @@ const handleMovie = (id)=>{
     <h2>{props.title}</h2>
     <div className='posters'>
     {movies.map((obj)=>
-         <img onClick={()=>{handleMovie(obj.id)}} className={props.isSmall ? 'smallposter' : 'poster'} alt='poster' src={`${IMAGE_URL+obj.backdrop_path}`} />
+         <img onClick={()=>{handleMovie(obj.id)}} className='smallposter'  alt='poster' src={`${IMAGE_URL+obj.backdrop_path}`} />
     )}
         
        
